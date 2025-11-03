@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acesso DiáriObra IA</title>
+    
+    <!-- CORREÇÃO FINAL 1: O BASE HREF RELATIVO PARA GITHUB PAGES -->
+    <base href="./"> 
+    
+    <!-- CORREÇÃO FINAL 2: LINK OBRIGATÓRIO PARA O VITE INJETAR O CSS COMPILADO -->
+    <!-- Este link deve apontar para o arquivo CSS de origem -->
+    <link rel="stylesheet" href="/src/index.css">
+
+    <!-- REMOVIDA A INJEÇÃO MANUAL DO TAILWIND QUE QUEBRAVA O SCRIPT -->
+    
+    <style>
+      /* MANTEMOS A SEÇÃO DE STYLES E KEYFRAMES (IMPRESSÃO/DARK MODE) */
+      .printable-portal {
+        display: none;
+      }
+      @media print {
+        body.print-active > #root {
+          display: none;
+        }
+        body.print-active .printable-portal {
+          display: block;
+        }
+        .print-page-break {
+          page-break-before: always;
+        }
+      }
+      .date-input-icon::-webkit-calendar-picker-indicator {
+        filter: invert(18%) sepia(80%) saturate(2583%) hue-rotate(217deg) brightness(89%) contrast(93%);
+      }
+      .dark .date-input-icon::-webkit-calendar-picker-indicator {
+        filter: invert(100%);
+      }
+    </style>
+    
+  </head>
+  <body class="bg-light-bg dark:bg-dark-bg text-light-text-primary dark:text-dark-text-primary">
+    <div id="root"></div>
+    <!-- Script map para módulos de produção (mantido) -->
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0",
+        "firebase/app": "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js",
+        "firebase/auth": "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js",
+        "firebase/firestore": "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js",
+        "firebase/": "https://aistudiocdn.com/firebase@^12.5.0/"
+      }
+    }
+    </script>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
