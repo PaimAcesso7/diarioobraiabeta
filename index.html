@@ -4,101 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Acesso DiáriObra IA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              'brand-indigo': '#4f46e5',
-              'brand-indigo-light': '#6366f1',
-              // Light Theme
-              'light-bg': '#f9fafb',
-              'light-card': '#ffffff',
-              'light-text-primary': '#1f2937',
-              'light-text-secondary': '#374151',
-              // Dark Theme
-              'dark-bg': '#111827',
-              'dark-card': '#1f2937',
-              'dark-border': '#374151',
-              'dark-text-primary': '#f9fafb',
-              'dark-text-secondary': '#d1d5db',
-            },
-            keyframes: {
-              'gradient-x': {
-                '0%, 100%': {
-                  'background-size': '200% 200%',
-                  'background-position': 'left center',
-                },
-                '50%': {
-                  'background-size': '200% 200%',
-                  'background-position': 'right center',
-                },
-              },
-               'pulse-bright': {
-                '0%, 100%': { opacity: 1, transform: 'scale(1)' },
-                '50%': { opacity: 0.8, transform: 'scale(1.1)' },
-              },
-              'sparkle': {
-                '0%, 100%': { opacity: '0', transform: 'scale(0.5)' },
-                '50%': { opacity: '1', transform: 'scale(1.2)' },
-              }
-            },
-            animation: {
-              'gradient-x': 'gradient-x 3s ease infinite',
-              'pulse-bright': 'pulse-bright 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'sparkle-1': 'sparkle 1.8s ease-in-out infinite',
-              'sparkle-2': 'sparkle 1.8s ease-in-out infinite 0.3s',
-              'sparkle-3': 'sparkle 1.8s ease-in-out infinite 0.6s',
-              'sparkle-4': 'sparkle 1.8s ease-in-out infinite 0.9s',
-              'sparkle-5': 'sparkle 1.8s ease-in-out infinite 1.2s',
-            },
-          }
+    
+    <!-- CORREÇÃO FINAL 1: O BASE HREF RELATIVO PARA GITHUB PAGES -->
+    <base href="./"> 
+    
+    <!-- CORREÇÃO FINAL 2: LINK OBRIGATÓRIO PARA O VITE INJETAR O CSS COMPILADO -->
+    <!-- Este link deve apontar para o arquivo CSS de origem -->
+    <link rel="stylesheet" href="/src/index.css">
+
+    <!-- REMOVIDA A INJEÇÃO MANUAL DO TAILWIND QUE QUEBRAVA O SCRIPT -->
+    
+    <style>
+      /* MANTEMOS A SEÇÃO DE STYLES E KEYFRAMES (IMPRESSÃO/DARK MODE) */
+      .printable-portal {
+        display: none;
+      }
+      @media print {
+        body.print-active > #root {
+          display: none;
+        }
+        body.print-active .printable-portal {
+          display: block;
+        }
+        .print-page-break {
+          page-break-before: always;
         }
       }
-    </script>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0",
-    "firebase/app": "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js",
-    "firebase/auth": "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js",
-    "firebase/firestore": "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js",
-    "firebase/": "https://aistudiocdn.com/firebase@^12.5.0/"
-  }
-}
-</script>
-<style>
-  .printable-portal {
-    display: none;
-  }
-  @media print {
-    body.print-active > #root {
-      display: none;
-    }
-    body.print-active .printable-portal {
-      display: block;
-    }
-    .print-page-break {
-      page-break-before: always;
-    }
-  }
-  .date-input-icon::-webkit-calendar-picker-indicator {
-    filter: invert(18%) sepia(80%) saturate(2583%) hue-rotate(217deg) brightness(89%) contrast(93%);
-  }
-  .dark .date-input-icon::-webkit-calendar-picker-indicator {
-    filter: invert(100%);
-  }
-</style>
-<link rel="stylesheet" href="/index.css">
-</head>
+      .date-input-icon::-webkit-calendar-picker-indicator {
+        filter: invert(18%) sepia(80%) saturate(2583%) hue-rotate(217deg) brightness(89%) contrast(93%);
+      }
+      .dark .date-input-icon::-webkit-calendar-picker-indicator {
+        filter: invert(100%);
+      }
+    </style>
+    
+  </head>
   <body class="bg-light-bg dark:bg-dark-bg text-light-text-primary dark:text-dark-text-primary">
     <div id="root"></div>
+    <!-- Script map para módulos de produção (mantido) -->
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0",
+        "firebase/app": "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js",
+        "firebase/auth": "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js",
+        "firebase/firestore": "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js",
+        "firebase/": "https://aistudiocdn.com/firebase@^12.5.0/"
+      }
+    }
+    </script>
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>
