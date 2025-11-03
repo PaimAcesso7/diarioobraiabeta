@@ -1,7 +1,0 @@
-{
-  "name": "Diário de Obra IA (melhoria IA)",
-  "description": "Um aplicativo para registro de diário de obra que utiliza IA para analisar imagens, gerar descrições de tarefas e organizar informações do dia, como condições do tempo e contagem de colaboradores.",
-  "requestFramePermissions": [
-    "camera"
-  ]
-}
